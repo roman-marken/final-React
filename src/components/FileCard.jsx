@@ -2,12 +2,14 @@ import { memo, useState } from 'react'
 import { Image, LoaderCircle, MoreHorizontal, Trash2 } from 'lucide-react'
 import { formatSize } from '../utils/files.js'
 
-function FileCard({ file, onDelete }) {
+function FileCard({ file, onDelete, onView }) {
   const [menuOpen, setMenuOpen] = useState(false)
   return (
     <article className="file-card">
       <div className="file-preview">
-        <img src={file.dataUrl} alt={file.name} loading="lazy" />
+        <button className="file-preview-button" type="button" aria-label={`Открыть фото: ${file.name}`} onClick={() => onView(file)}>
+          <img src={file.dataUrl} alt="" loading="lazy" />
+        </button>
         <div className="preview-actions">
           <button className="icon-button" type="button" aria-label={`Действия: ${file.name}`} onClick={() => setMenuOpen(!menuOpen)}>
             <MoreHorizontal size={20} />
