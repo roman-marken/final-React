@@ -1,0 +1,31 @@
+import { memo, useState } from 'react'
+import { Image, LoaderCircle, MoreHorizontal, Trash2 } from 'lucide-react'
+import { formatSize } from '../utils/files.js'
+
+function FileCard({ file, onDelete }) {
+  const [menuOpen, setMenuOpen] = useState(false)
+  return (
+    <article className="file-card">
+      <div className="file-preview">
+        <img src={file.dataUrl} alt={file.name} loading="lazy" />
+        <div className="preview-actions">
+          <button className="icon-button" type="button" aria-label={`Действия: ${file.name}`} onClick={() => setMenuOpen(!menuOpen)}>
+            <MoreHorizontal size={20} />
+          </button>
+          {menuOpen && <button className="delete-menu" type="button" onClick={() => onDelete(file.id)}><Trash2 size={15} /> Удалить</button>}
+        </div>
+      </div>
+      <div className="file-info">
+        <span className="file-type-icon"><Image size={15} /></span>
+        <div className="file-copy"><p title={file.name}>{file.name}</p><span>{formatSize(file.size)}</span></div>
+        <button className="delete-button" type="button" aria-label={`Удалить ${file.name}`} onClick={() => onDelete(file.id)}><Trash2 size={16} /></button>
+      </div>
+    </article>
+  )
+}
+
+export default memo(FileCard)
+
+export function FileLoadingCard() {
+  return <div className="loading-card"><LoaderCircle className="spin" size={27} /><span>Сохраняем изображение…</span></div>
+}
