@@ -1,8 +1,9 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
-import LoginPage from './pages/LoginPage.jsx'
-import DashboardPage from './pages/DashboardPage.jsx'
+import type { ReactNode } from 'react'
+import LoginPage from './pages/LoginPage.tsx'
+import DashboardPage from './pages/DashboardPage.tsx'
 
-export function ProtectedRoute({ children }) {
+export function ProtectedRoute({ children }: { children: ReactNode }) {
   return localStorage.getItem('mini-cloud-token') ? children : <Navigate to="/login" replace />
 }
 

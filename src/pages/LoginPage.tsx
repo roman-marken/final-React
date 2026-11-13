@@ -1,13 +1,13 @@
-import { useState } from 'react'
+import { useState, type FormEvent } from 'react'
 import { ArrowRight, Cloud, FolderOpen, LockKeyhole } from 'lucide-react'
 import { Navigate, useNavigate } from 'react-router-dom'
 
 export default function LoginPage() {
   const navigate = useNavigate()
-  const [error, setError] = useState('')
+  const [error, setError] = useState<string>('')
   if (localStorage.getItem('mini-cloud-token')) return <Navigate to="/dashboard" replace />
 
-  function signIn(event) {
+  function signIn(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
     const username = String(formData.get('username') || '').trim()

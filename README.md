@@ -1,6 +1,6 @@
 # Mini Cloud
 
-Личное демо-хранилище изображений на React. Интерфейс приложения и работа с файлами выполняются в браузере; Node.js нужен только для разработки и production-сборки.
+Личное демо-хранилище изображений на React и TypeScript. Интерфейс приложения и работа с файлами выполняются в браузере; Node.js нужен только для разработки и production-сборки.
 
 ## Запуск через Docker
 
@@ -23,7 +23,7 @@ npm install
 npm run dev
 ```
 
-Production-сборка: `npm run build`. Тест: `npm test`.
+Проверка типов: `npm run typecheck`. Production-сборка: `npm run build`. Тест: `npm test`.
 
 ## Возможности
 

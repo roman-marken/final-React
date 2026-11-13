@@ -1,5 +1,5 @@
 import { Cloud, LogOut } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Header() {
   const navigate = useNavigate()
@@ -9,7 +9,7 @@ export default function Header() {
   }
   return (
     <header className="app-header">
-      <a className="brand" href="/dashboard"><span className="brand-mark"><Cloud size={21} fill="currentColor" /></span>mini<span>cloud</span></a>
+      <Link className="brand" to="/dashboard"><span className="brand-mark"><Cloud size={21} fill="currentColor" /></span>mini<span>cloud</span></Link>
       <div className="header-right"><span className="avatar">M</span><button className="logout-button" type="button" onClick={logout}><LogOut size={16} /><span>Выйти</span></button></div>
     </header>
   )

@@ -1,9 +1,12 @@
 import { memo, useState } from 'react'
 import { Image, LoaderCircle, MoreHorizontal, Trash2 } from 'lucide-react'
-import { formatSize } from '../utils/files.js'
+import { formatSize } from '../utils/files.ts'
+import type { CloudFile } from '../types.ts'
 
-function FileCard({ file, onDelete, onView }) {
-  const [menuOpen, setMenuOpen] = useState(false)
+type FileCardProps = { file: CloudFile; onDelete: (id: string) => void; onView: (file: CloudFile) => void }
+
+function FileCard({ file, onDelete, onView }: FileCardProps) {
+  const [menuOpen, setMenuOpen] = useState<boolean>(false)
   return (
     <article className="file-card">
       <div className="file-preview">

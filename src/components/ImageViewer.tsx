@@ -1,10 +1,13 @@
 import { useEffect } from 'react'
 import { X } from 'lucide-react'
-import { formatSize } from '../utils/files.js'
+import { formatSize } from '../utils/files.ts'
+import type { CloudFile } from '../types.ts'
 
-export default function ImageViewer({ file, onClose }) {
+type ImageViewerProps = { file: CloudFile; onClose: () => void }
+
+export default function ImageViewer({ file, onClose }: ImageViewerProps) {
   useEffect(() => {
-    function closeOnEscape(event) {
+    function closeOnEscape(event: globalThis.KeyboardEvent) {
       if (event.key === 'Escape') onClose()
     }
     window.addEventListener('keydown', closeOnEscape)
